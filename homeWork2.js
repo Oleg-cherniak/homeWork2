@@ -1,6 +1,6 @@
 // TASK 1
 
-const arr1 = [1, 2, 3, 4, 5, 6, 7];
+const numberArray = [1, 2, 3, 4, 5, 6, 7];
 Array.prototype.customFilter = function (callback) {
   // your implementation here
   let arr = this;
@@ -14,15 +14,15 @@ Array.prototype.customFilter = function (callback) {
   return result;
 };
 
-const arr2 = arr1.customFilter((elem, index, array) => {
+const executedArray = numberArray.customFilter((elem, index, array) => {
   return elem > 3;
 });
 
-console.log(arr2);
+console.log(executedArray);
 
 // TASK 2
 
-const arr1 = [1, 2, 3, 4, 5, 6, 7];
+const largeNumbersArray = [29, 56, 101, 177, 48, 196, 517];
 Array.prototype.customMap = function (callback) {
   // your implementation here
   let arr = this;
@@ -34,7 +34,7 @@ Array.prototype.customMap = function (callback) {
   return result;
 };
 
-const arr2 = arr1.customMap((elem, index, array) => {
+const arr2 = largeNumbersArray.customMap((elem, index, array) => {
   return elem * 2;
 });
 
