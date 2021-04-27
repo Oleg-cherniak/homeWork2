@@ -3,12 +3,12 @@
 const numberArray = [1, 2, 3, 4, 5, 6, 7];
 Array.prototype.customFilter = function (callback) {
   // your implementation here
-  let arr = this;
-  let result = [];
+  
+  const result = [];
 
-  for (let i = 0; i < arr.length; i++) {
-    if (callback(arr[i], i, arr)) {
-      result.push(arr[i]);
+  for (let i = 0; i < this.length; i++) {
+    if (callback(this[i], i, this)) {
+      result.push(this[i]);
     }
   }
   return result;
@@ -25,11 +25,11 @@ console.log(executedArray);
 const largeNumbersArray = [29, 56, 101, 177, 48, 196, 517];
 Array.prototype.customMap = function (callback) {
   // your implementation here
-  let arr = this;
-  let result = [];
+  
+  const result = [];
 
-  for (let i = 0; i < arr.length; i++) {
-    result[i] = callback(arr[i], i, arr);
+  for (let i = 0; i < this.length; i++) {
+    result[i] = callback(this[i], i, this);
   }
   return result;
 };
