@@ -1,141 +1,41 @@
- //  TASK 2 
+// TASK 1
 
- const initialData = [
-    {
-      username: "Maria",
-      age: 25,
-    },
-    {
-      username: "Alex",
-      age: 21,
-    },
-    {
-      username: "Oleg",
-      age: 14,
-    },
-    {
-      username: "Dmitriy",
-      age: 35,
-    },
-    {
-      username: "Oksana",
-      age: 72,
-    },
-  ];
-  
-  const filteredArray = initialData.filter((element, index) => {
-    return element.age >= 21;
-  });
-  const sortedArray = filteredArray.sort((prev, next) =>
-    prev.username > next.username ? 1 : -1
-  );
-  
-  console.log(filteredArray);
-  console.log(sortedArray);
+const arr1 = [1, 2, 3, 4, 5, 6, 7];
+Array.prototype.customFilter = function (callback) {
+  // your implementation here
+  let arr = this;
+  let result = [];
 
-  // TASK 5 
-
-  const isPalindrome = (letters) => {
-    let characters = letters.split(""),
-      firstLetter = characters.shift(),
-      lastLetter = characters.pop();
-  
-    if (firstLetter.toLowerCase() !== lastLetter.toLowerCase()) {
-      return false;
+  for (let i = 0; i < arr.length; i++) {
+    if (callback(arr[i], i, arr)) {
+      result.push(arr[i]);
     }
-  
-    if (characters.length < 2) {
-      return true;
-    }
-  
-    return isPalindrome(characters.join(""));
-  };
-  console.log(isPalindrome("шалаш"));
+  }
+  return result;
+};
 
-  // TASK 8 
+const arr2 = arr1.customFilter((elem, index, array) => {
+  return elem > 3;
+});
 
-  const videos = [
-    {
-      id: 65432445,
-      title: "The Chamber",
-    },
-    {
-      id: 675465,
-      title: "Fracture",
-    },
-    { id: 70111470, title: "Die Hard" },
-    { id: 654356453, title: "Bad Boys" },
-  ];
-  const obj = videos.reduce((acc, elem, index) => {
-    acc[index] = elem;
-    return acc;
-  }, {});
-  console.log(obj);
+console.log(arr2);
 
-  // TASK 3 !!!!!!!!!! НЕВЕРНО  !!!!!!!!!!!!!!!
+// TASK 2
 
-  const users = [
-    {
-      id: 1,
-      name: "Alex",
-    },
-    {
-      id: 2,
-      name: "Oleg",
-    },
-    {
-      id: 3,
-      name: "Igor",
-    },
-  ];
-  
-  const fn1 = (arr1, arr2) => {
-  
-    const result = users.filter((elem, index) => {
-  
-     return (elem["id"] !== arr2[elem]);
-  
-  });
-  console.log(fn1(users, [2]));
+const arr1 = [1, 2, 3, 4, 5, 6, 7];
+Array.prototype.customMap = function (callback) {
+  // your implementation here
+  let arr = this;
+  let result = [];
 
-  // TASK 7
+  for (let i = 0; i < arr.length; i++) {
+    result[i] = callback(arr[i], i, arr);
+  }
+  return result;
+};
 
-    const newReleases = [
-    {
-        id: 70111470,
-        title: "Die Hard", 
-        boxart: "http://cdn-0.nflximg.com/images/2891/DieHard.jpg",
-        uri: "http://api.netflix.com/catalog/titles/movies/70111470", 
-        rating: [4.0],
-        bookmark: []
-    }, { 
-        id: 654356453,
-        title: "Bad Boys", 
-        boxart: "http://cdn-0.nflximg.com/images/2891/BadBoys.jpg",
-        uri: "http://api.netflix.com/catalog/titles/movies/70111470",
-        rating: [5.0], 
-        bookmark: [{ id: 432534, time: 65876586 }]
-    }, { 
-        id: 65432445, 
-        title: "The Chamber", 
-        boxart: "http://cdn-0.nflximg.com/images/2891/TheChamber.jpg", 
-        uri: "http://api.netflix.com/catalog/titles/movies/70111470", 
-        rating: [4.0], 
-        bookmark: []
-    }, { 
-        id: 675465, 
-        title: "Fracture", 
-        boxart: "http://cdn-0.nflximg.com/images/2891/Fracture.jpg", 
-        uri: "http://api.netflix.com/catalog/titles/movies/70111470", 
-        rating: [5.0], 
-        bookmark: [{ id: 432534, time: 65876586 }]
-    }
-];
+const arr2 = arr1.customMap((elem, index, array) => {
+  return elem * 2;
+});
 
-const newArray = newReleases.reduce((result, elem, index) => {
-    if (elem["rating"] === [5.0]) {
-        return (result += elem[0]);
-    } 
-
-}, [])
-console.log(newArray);
+console.log(arr2);
